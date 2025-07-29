@@ -1,0 +1,28 @@
+db:
+  repository: public.ecr.aws/r9n4c1b3/rangco-lab2
+  tag: db-v1
+  replicas: 1
+
+redis:
+  repository: public.ecr.aws/r9n4c1b3/rangco-lab2
+  tag: redis-v1
+  replicas: 1
+
+app:
+  repository: public.ecr.aws/r9n4c1b3/rangco-lab2
+  tag: app-v1
+  replicas: 1
+
+nginx:
+  repository: nginx
+  tag: latest
+  replicas: 1
+
+
+ingress:
+  healthCheckPath: /healthz
+  host: app.parkdam.com
+  certificateArn: arn:aws:acm:us-east-2:504301552141:certificate/b3b79f29-d16a-4a95-a29b-f115ae09b9b4
+  group:
+    name: shared-alb
+    order: "10"
